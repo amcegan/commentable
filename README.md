@@ -1,1 +1,2 @@
 "# commentable" 
+"gradle publishToMavenLocal" 
