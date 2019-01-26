@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.grails.comments
+package com.centaur.plugins
 
 /**
  * Marker interface used to specify a domain that can be commented on
