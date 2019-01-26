@@ -1,4 +1,4 @@
-package org.grails.comments
+package com.centaur.plugins
 
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification

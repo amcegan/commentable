@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.grails.comments
+package com.centaur.plugins
 
 class CommentLink {
 
-	static belongsTo = [comment:org.grails.comments.Comment]
+	static belongsTo = [comment:com.centaur.plugins.Comment]
 	
 	Long commentRef
 	String type

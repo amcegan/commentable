@@ -1,4 +1,4 @@
-package org.grails.comments
+package com.centaur.plugins
 
 class Poster {
 

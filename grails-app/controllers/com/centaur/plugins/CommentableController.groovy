@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.grails.comments
+package com.centaur.plugins
 
 import grails.util.*
-import org.grails.comments.Comment
-import org.grails.comments.CommentException
-import org.grails.comments.CommentLink
+import com.centaur.plugins.Comment
+import com.centaur.plugins.CommentException
+import com.centaur.plugins.CommentLink
 
 import javax.servlet.http.HttpServletResponse
 

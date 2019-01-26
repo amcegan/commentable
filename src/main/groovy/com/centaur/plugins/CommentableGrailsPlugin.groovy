@@ -2,9 +2,9 @@ package com.centaur.plugins
 
 import grails.plugins.*
 import grails.util.GrailsNameUtils
-import org.grails.comments.Comment
-import org.grails.comments.CommentException
-import org.grails.comments.CommentLink
+import com.centaur.plugins.Comment
+import com.centaur.plugins.CommentException
+import com.centaur.plugins.CommentLink
 
 class CommentableGrailsPlugin extends Plugin {
 
@@ -50,12 +50,12 @@ Brief summary/description of the plugin.
 
     void doWithDynamicMethods() {
         for(domainClass in grailsApplication.domainClasses) {
-            if(org.grails.comments.Commentable.class.isAssignableFrom(domainClass.clazz)) {
+            if(com.centaur.plugins.Commentable.class.isAssignableFrom(domainClass.clazz)) {
                 domainClass.clazz.metaClass {
                     'static' {
                         getRecentComments {->
                             def clazz = delegate
-                            org.grails.comments.CommentLink.withCriteria {
+                            com.centaur.plugins.CommentLink.withCriteria {
                                 projections { property "comment" }
                                 eq 'type', GrailsNameUtils.getPropertyName(clazz)
                                 maxResults 5
