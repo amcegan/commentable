@@ -1,7 +1,14 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven { url "https://repo.grails.org/grails/core" }
+        //maven { url "https://repo.grails.org/grails/core" }
+        maven {
+            credentials {
+                username "centaurdev"
+                password "froggie5\$"
+            }
+            url "http://jenkins.archwayproducts.com:8080/archiva/repository/internal/"
+        }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
@@ -9,7 +16,7 @@ buildscript {
     }
 }
 
-version "0.1.1"
+version appVersion
 group "com.centaur.plugins"
 
 apply plugin:"eclipse"
@@ -42,6 +49,7 @@ dependencies {
     compile "org.grails.plugins:async"
     compile "org.grails.plugins:scaffolding"
     compile "org.grails.plugins:gsp"
+    compile 'org.grails.plugins:version-update:2.0.0'
     console "org.grails:grails-console"
     profile "org.grails.profiles:web-plugin"
     provided "org.grails:grails-plugin-services"
@@ -74,7 +82,35 @@ grailsPublish {
     developers = [johndoe:"John Doe"]
 }
 
+publishing {
+    publications {
+        mavenJar(MavenPublication) {
+            pom.withXml {
+                def pomNode = asNode()
+                pomNode.dependencyManagement.replaceNode {}
 
+                // simply remove dependencies without a version
+                // version-less dependencies are handled with dependencyManagement
+                // see https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/8 for more complete solutions
+                pomNode.dependencies.dependency.findAll {
+                    it.version.text().isEmpty()
+                }.each {
+                    it.replaceNode {}
+                }
+            }
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username "centaurdev"
+                password "froggie5\$"
+            }
+            url "http://jenkins.archwayproducts.com:8080/archiva/repository/internal/"
+        }
+    }
+}
 
 assets {
     packagePlugin = true
