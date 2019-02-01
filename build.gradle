@@ -7,7 +7,7 @@ buildscript {
                 username "centaurdev"
                 password "froggie5\$"
             }
-            url "http://jenkins.archwayproducts.com:8080/archiva/repository/internal/"
+            url "https://jenkins.archwayproducts.com:8443/archiva/repository/internal/"
         }
     }
     dependencies {
@@ -107,7 +107,7 @@ publishing {
                 username "centaurdev"
                 password "froggie5\$"
             }
-            url "http://jenkins.archwayproducts.com:8080/archiva/repository/internal/"
+            url "https://jenkins.archwayproducts.com:8443/archiva/repository/internal/"
         }
     }
 }
